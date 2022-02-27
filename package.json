@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "canvas-sketch": "^0.7.4"
+    "canvas-sketch": "^0.7.4",
+    "canvas-sketch-util": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
