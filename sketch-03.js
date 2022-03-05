@@ -8,7 +8,7 @@ const settings = {
   animate: true
 };
 
-const sketch = ({ context, width, height, frame }) => {
+const sketch = ({ context, width, height }) => {
   const agents = [];
 
   for (let i = 0; i < 40; i++) {
@@ -18,7 +18,7 @@ const sketch = ({ context, width, height, frame }) => {
     agents.push(new Agent(x,y));
   }
 
-  return ({ context, width, height }) => {
+  return ({ context, width, height, frame }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 

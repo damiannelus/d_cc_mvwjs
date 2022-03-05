@@ -36,12 +36,12 @@ class Agent {
     context.lineWidth = 3;
     context.beginPath();
     context.arc(0, 0, this.radius, 0, Math.PI * 2);
-    const r = math.mapRange(random.noise2D(0, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
-    const g = math.mapRange(random.noise2D(100, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
-    const b = math.mapRange(random.noise2D(200, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
+    const n = random.noise2D(index, index + frame * 10, 0.01);
+    const r = math.mapRange(random.noise2D(0, index + frame * 10, 0.001), -1, 1, 0, 255);
+    const g = math.mapRange(random.noise2D(125, index + frame * 10, 0.001), -1, 1, 0, 255);
+    const b = math.mapRange(random.noise2D(255, index + frame * 10, 0.001), -1, 1, 0, 255);
     context.strokeStyle = 
       utils.rgb2hex(r,g,b);
-    console.log('context.strokeStyle :>> ', context.strokeStyle);
     context.fill();
     context.stroke();
 
