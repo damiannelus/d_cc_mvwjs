@@ -1,4 +1,5 @@
 const random = require('canvas-sketch-util/random');
+const math = require('canvas-sketch-util/math')
 const Vector = require('./vector');
 const utils = require('./utils');
 class Agent {
@@ -23,6 +24,24 @@ class Agent {
       utils.rgb2hex(200, 
         (this.pos.x/width)*255, 
         (this.pos.y/height)*255);
+    context.fill();
+    context.stroke();
+
+    context.restore();
+  }
+
+  drawNoiseColors(context, index, frame) {
+    context.save();
+    context.translate(this.pos.x, this.pos.y);
+    context.lineWidth = 3;
+    context.beginPath();
+    context.arc(0, 0, this.radius, 0, Math.PI * 2);
+    const r = math.mapRange(random.noise2D(0, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
+    const g = math.mapRange(random.noise2D(100, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
+    const b = math.mapRange(random.noise2D(200, index + frame * 10, 0.01, 10), -1, 1, 0, 255);
+    context.strokeStyle = 
+      utils.rgb2hex(r,g,b);
+    console.log('context.strokeStyle :>> ', context.strokeStyle);
     context.fill();
     context.stroke();
 

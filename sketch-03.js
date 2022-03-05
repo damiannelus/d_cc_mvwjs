@@ -5,10 +5,10 @@ const utils = require('./js/utils');
 
 const settings = {
   dimensions: [ 1080, 1080 ],
-  animation: true
+  animate: true
 };
 
-const sketch = ({ context, width, height }) => {
+const sketch = ({ context, width, height, frame }) => {
   const agents = [];
 
   for (let i = 0; i < 40; i++) {
@@ -38,13 +38,17 @@ const sketch = ({ context, width, height }) => {
       
     }
 
-    agents.forEach(agent => {
-
-      agent.update();
-      agent.draw(context, width, height);
-
-      agent.bounce(width, height);
-    });
+    for (const agentIndex in agents) {
+      if (Object.hasOwnProperty.call(agents, agentIndex)) {
+        const agent = agents[agentIndex];
+        agent.update();
+        // color based on the position of the agent
+        // agent.draw(context, width, height);
+        // color drawn randomly
+        agent.drawNoiseColors(context, agentIndex, frame);
+        agent.bounce(width, height);
+      }
+    }
   };
 };
 
