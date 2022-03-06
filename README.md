@@ -1,5 +1,5 @@
 
-# d_cc_mvwjs
+# Domestika: Creative coding: making visuals with JS
 
 My repo of experiments while doing the Domestika Creative Coding: Making Visuals with JavaScript
 
